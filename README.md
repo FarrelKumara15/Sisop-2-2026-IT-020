@@ -26,8 +26,53 @@ pid = fork();
 ```
 Program diatas berfungsi untuk membuat folder "brankas_kedai" 
 
+#### 2
+```bash
+pid = fork();
+    if (pid == 0) {
+        execlp("cp", "cp", "buku_hutang.csv", "brankas_kedai/", NULL);
+        exit(EXIT_FAILURE);
+    }
+    waitpid(pid, &status, 0);
+    if (status != 0){
+        error_exit();
+    }
+```
+Program diatas berfungsi untuk menyalin file "buku_hutang.csv" ke folder "brankas_kedai"
 
-<img width="312" height="57" alt="2026-04-08_21-57-14" src="https://github.com/user-attachments/assets/1d5c0d26-e30b-4474-90d0-4453aa3ad9d8" />
+#### 3
+```bash
+pid = fork();
+    if (pid == 0) {
+        execl("/bin/sh", "sh", "-c",
+              "grep \"Belum Lunas\" brankas_kedai/buku_hutang.csv > brankas_kedai/daftar_penunggak.txt",
+              NULL);
+        exit(EXIT_FAILURE);
+    }
+    waitpid(pid, &status, 0);
+    if (status != 0){
+        error_exit();
+    }
+```
+Program diatas berfungsi untuk memgambil "Belum Lunas" dari "buku_hutang.csv"
+
+#### 4
+```bash
+pid = fork();
+    if (pid == 0) {
+        execlp("zip", "zip", "-rq", "rahasia_muthu.zip", "brankas_kedai", NULL);
+        exit(EXIT_FAILURE);
+    }
+    waitpid(pid, &status, 0);
+    if (status != 0){
+        error_exit();
+    }
+```
+Program diatas berfungsi untuk zip folder "brankas_kedai" <br/>
+
+Jalankan Program <br/>
+<img width="682" height="433" alt="2026-04-08_22-46-01" src="https://github.com/user-attachments/assets/7c636c35-de46-4600-9a89-4fba0bae36e7" />
+
 
 ### Soal 2
 ### Soal 3
