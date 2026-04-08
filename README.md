@@ -372,6 +372,7 @@ Function diatas berfungsi untuk menghentikan daemon. <br/><br/>
 Jalankan Program: <br/>
 <img width="608" height="197" alt="2026-04-09_00-35-47" src="https://github.com/user-attachments/assets/f7d75b2d-f89f-44a9-8ccc-11fff822820a" /> <br/>
 <img width="363" height="128" alt="2026-04-09_00-36-24" src="https://github.com/user-attachments/assets/66ec1339-8df6-478a-9d0d-a4fe52c434f9" /> <br/>
+<img width="580" height="135" alt="2026-04-09_00-40-39" src="https://github.com/user-attachments/assets/19d4757d-e591-4a80-873a-984546179f78" /> <br/>
 <img width="245" height="53" alt="2026-04-09_00-38-32" src="https://github.com/user-attachments/assets/e6bbc497-55b8-4670-894d-fdb0e9d8f176" /> <br/>
-<img width="822" height="81" alt="2026-04-09_00-39-11" src="https://github.com/user-attachments/assets/f3aa7483-d48a-4ab7-9c9f-75d62a82d4ab" />
-
+<img width="822" height="81" alt="2026-04-09_00-39-11" src="https://github.com/user-attachments/assets/f3aa7483-d48a-4ab7-9c9f-75d62a82d4ab" /> <br><br/>
+Setelah selesai file "angel" bisa dihapus.
