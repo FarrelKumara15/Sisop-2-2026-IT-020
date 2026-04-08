@@ -4,7 +4,7 @@
 #### Struktur Repositori Soal 1 di Akhir
 <img width="274" height="225" alt="2026-04-08_21-35-11" src="https://github.com/user-attachments/assets/517a9e14-d370-47cf-a71d-4d42615f6241" />
 
-Masukkan file "buku_hutang.csv" dan buat file. <br/>
+Masukkan file "buku_hutang.csv" dan buat file "kasir_muthu.c. <br/>
 <br/>Soal 1 memerintahkan untuk mengelola data "buku_hutang.csv" menggunakan konsep process (fork-exec-wait),<br/>
 1. Membuat folder "brankas_kedai"
 2. Menyalin file buku_hutang.csv ke dalam folder "brankas_kedai"
