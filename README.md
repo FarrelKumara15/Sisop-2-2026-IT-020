@@ -4,6 +4,7 @@
 #### Struktur Repositori Soal 1 di Akhir
 <img width="274" height="225" alt="2026-04-08_21-35-11" src="https://github.com/user-attachments/assets/517a9e14-d370-47cf-a71d-4d42615f6241" />
 
+Masukkan file "buku_hutang.csv" dan buat file. <br/>
 <br/>Soal 1 memerintahkan untuk mengelola data "buku_hutang.csv" menggunakan konsep process (fork-exec-wait),<br/>
 1. Membuat folder "brankas_kedai"
 2. Menyalin file buku_hutang.csv ke dalam folder "brankas_kedai"
@@ -67,12 +68,180 @@ pid = fork();
     if (status != 0){
         error_exit();
     }
+
+// Berhasil
+printf("[INFO] Fuhh, selamat! Buku hutang dan daftar penagihan berhasil diamankan.\n");
 ```
 Program diatas berfungsi untuk zip folder "brankas_kedai" <br/>
 
-Jalankan Program <br/>
+Jalankan Program: <br/>
 <img width="682" height="433" alt="2026-04-08_22-46-01" src="https://github.com/user-attachments/assets/7c636c35-de46-4600-9a89-4fba0bae36e7" />
-
+<br/>Setelah selesai, file "kasir_muthu" bisa dihapus.
+<br/><br/>
 
 ### Soal 2
+#### Struktur Repository Soal 2 di Akhir
+<img width="236" height="177" alt="image" src="https://github.com/user-attachments/assets/53cc7a47-8530-41fe-bad9-5c28f8b8ba1a" />
+
+<br/>Buat file "contract_daemon.c"
+<br/> Soal 2 memerintahkan untuk membuat program dengan mengimplementasikan daemon process yang berjalan di background,
+1. Membuat file "contract.txt"
+2. Memantau file setiap 1 detik
+3. Mengembalikan file jika:
+   - Dihapus
+   - Diubah isinya 
+4. Menuliskan log ke "work.log
+5. Menangani sinyal saat daemon dihentikan
+
+<br/>
+
+```bash
+// Mengambil waktu sekarang
+void get_time(char *buffer){
+  time_t now = time(NULL);
+  struct tm *t = localtime(&now);
+  strftime(buffer, 64, "%Y-%m-%d %H:%M:%S", t);
+}
+```
+Function diatas untuk menetapkan waktu<br/>
+
+#### 1
+```bash
+void create_contract(int restored){
+   FILE *f = fopen("contract.txt", "w");
+
+   char timebuff[64];
+   get_time(timebuff);
+
+   fprintf(f, "A promise to keep going, even when unseen.\n\n");
+   
+   // Kondisi ketika ada yang berubah di contract.txt
+   if(restored){
+      fprintf(f, "restored at: %s\n", timebuff);
+   }
+   else{
+      fprintf(f, "created at: %s\n", timebuff);
+   }
+   fclose(f);
+}
+```
+Function diatas berfungsi untuk membuat file "contract.txt" <br/>
+
+#### 2
+```bash
+void write_log(char *message){
+   FILE *f = fopen("work.log", "a");
+   fprintf(f, "%s\n", message);
+   fclose(f);
+}
+```
+Function diatas berfungsi untuk membuat file "work.log" <br/>
+
+#### 3
+```bash
+int file_exist(){
+   FILE *f = fopen("contract.txt", "r");
+   if(f == NULL){
+      return 0;
+   }
+   fclose(f);
+   return 1;
+}
+```
+Function diatas berfungsi untuk mengecek apakah "contract.txt" ada <br/>
+
+#### 4
+```bash
+int valid_content(){
+   FILE *f = fopen("contract.txt", "r");
+   if(f == NULL){
+      return 0;
+   }
+
+   char buffer[1024];
+   int len = fread(buffer, 1, sizeof(buffer) - 1, f);
+   buffer[len] = '\0'; 
+
+   fclose(f);
+   
+   // Mengecek isi utama
+   if(strstr(buffer, "A promise to keep going, even when unseen.") == NULL){
+      return 0;
+   }
+   
+   // Mengecek timestamp
+   if(strstr(buffer, "created at:") == NULL &&
+      strstr(buffer, "restored at:") == NULL){
+      return 0;
+   }
+
+   int newline = 0;
+   for(int i = 0; buffer[i] != '\0'; i++){
+       if(buffer[i] == '\n') newline++;
+   }
+    
+   // Mengecek apakah ada tambahan isi
+   if(newline > 3){
+      return 0;
+   }
+
+  return 1; 
+}
+```
+Function diatas berfungsi untuk mengecek perubahan isi "contract.txt" <br/>
+
+#### 5
+```bash
+void handler(int sig){
+   write_log("We really weren't meant to be together");
+   exit(0);
+}
+```
+Function diatas berfungsi ketika kondisi daemon dihentikan <br/><br/>
+
+```bash
+while(1){
+     if(!file_exist()){ // Kondisi ketika file dihapus
+        sleep(1);
+        create_contract(1);
+     }
+     else{
+       if(!valid_content()){ // kondisi ketika ada perubahan isi contract.txt
+         write_log("contract violated.");
+         create_contract(1);
+       }
+     }
+
+    if(counter % 5 == 0){ // Log tiap 5 detik
+       char buffer[128];
+       int r = rand() % 3;
+       sprintf(buffer, "still working... %s", status[r]); // Random status
+       write_log(buffer);
+    }
+    sleep(1); // Monitoring file setiap 1 detik
+    counter++;
+```
+Memantau file setiap 1 detik dan menulis log setiap 5 detik.<br/><br>
+
+Jalankan Program: <br/>
+<img width="397" height="62" alt="2026-04-07_23-54-22" src="https://github.com/user-attachments/assets/f43f1f1d-a484-49d2-b921-e3de4b2d739a" /> <br/>
+<img width="247" height="51" alt="2026-04-07_23-54-30" src="https://github.com/user-attachments/assets/6ca64ec8-6b06-4348-a284-6892f9ccb0af" /> <br/>
+<img width="389" height="119" alt="2026-04-07_23-54-37" src="https://github.com/user-attachments/assets/2156e740-c0c9-4cd8-91b5-0acde0ed6dd5" /> <br/>
+<img width="276" height="320" alt="2026-04-07_23-54-57" src="https://github.com/user-attachments/assets/cec2157e-d450-47c6-b44f-1e3a06f5385b" /> <br/>
+<img width="392" height="174" alt="2026-04-07_23-55-37" src="https://github.com/user-attachments/assets/02716a5c-9107-4cda-90b0-461c4ea67b96" /> <br/>
+<img width="242" height="52" alt="2026-04-07_23-55-59" src="https://github.com/user-attachments/assets/26b586cf-e3d0-4456-b54f-51484b5efa86" /> <br/>
+<img width="1896" height="1008" alt="2026-04-07_23-56-16" src="https://github.com/user-attachments/assets/75747432-cf43-45fc-9d47-44f8ca48164e" /> <br/>
+<img width="389" height="379" alt="2026-04-08_00-09-57" src="https://github.com/user-attachments/assets/4fd9d0ab-d2c8-4048-b0b9-b704d03c5c39" /> <br/>
+<img width="930" height="734" alt="2026-04-08_00-11-09" src="https://github.com/user-attachments/assets/afeace70-983f-4afa-872c-d40e76ad868f" /> <br/> <br/>
+
+Setelah selesai file "contract_daemon" bisa dihapus.
+
+
+
+
+
+
+
+
+
 ### Soal 3
