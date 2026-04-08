@@ -229,15 +229,15 @@ Jalankan Program: <br/>
 <img width="389" height="119" alt="2026-04-07_23-54-37" src="https://github.com/user-attachments/assets/2156e740-c0c9-4cd8-91b5-0acde0ed6dd5" /> <br/>
 <img width="276" height="320" alt="2026-04-07_23-54-57" src="https://github.com/user-attachments/assets/cec2157e-d450-47c6-b44f-1e3a06f5385b" /> <br/><br/>
 
-Kondisi ketika "contract.txt" dihapus,
+Kondisi ketika "contract.txt" dihapus,<br/>
 <img width="392" height="174" alt="2026-04-07_23-55-37" src="https://github.com/user-attachments/assets/02716a5c-9107-4cda-90b0-461c4ea67b96" /> <br/>
 <img width="242" height="52" alt="2026-04-07_23-55-59" src="https://github.com/user-attachments/assets/26b586cf-e3d0-4456-b54f-51484b5efa86" /> <br/><br/>
 
-Kondisi ketika isi "contract.txt" diubah,
+Kondisi ketika isi "contract.txt" diubah,<br/>
 <img width="1896" height="1008" alt="2026-04-07_23-56-16" src="https://github.com/user-attachments/assets/75747432-cf43-45fc-9d47-44f8ca48164e" /> <br/>
 <img width="389" height="379" alt="2026-04-08_00-09-57" src="https://github.com/user-attachments/assets/4fd9d0ab-d2c8-4048-b0b9-b704d03c5c39" /> <br/><br/>
 
-Kondisi ketika daemon dihentikan,
+Kondisi ketika daemon dihentikan,<br/>
 <img width="930" height="734" alt="2026-04-08_00-11-09" src="https://github.com/user-attachments/assets/afeace70-983f-4afa-872c-d40e76ad868f" /> <br/> <br/>
 
 Setelah selesai file "contract_daemon" bisa dihapus.
@@ -379,10 +379,10 @@ Jalankan Program: <br/>
 <img width="608" height="197" alt="2026-04-09_00-35-47" src="https://github.com/user-attachments/assets/f7d75b2d-f89f-44a9-8ccc-11fff822820a" /> <br/>
 <img width="363" height="128" alt="2026-04-09_00-36-24" src="https://github.com/user-attachments/assets/66ec1339-8df6-478a-9d0d-a4fe52c434f9" /> <br/><br/>
 
-Kondisi ketika ./angel,
+Kondisi ketika ./angel, <br/>
 <img width="580" height="135" alt="2026-04-09_00-40-39" src="https://github.com/user-attachments/assets/19d4757d-e591-4a80-873a-984546179f78" /> <br/><br/>
 
-Kondisi ketika ./angel dihentikan,
+Kondisi ketika ./angel dihentikan, <br/>
 <img width="245" height="53" alt="2026-04-09_00-38-32" src="https://github.com/user-attachments/assets/e6bbc497-55b8-4670-894d-fdb0e9d8f176" /> <br/>
 <img width="822" height="81" alt="2026-04-09_00-39-11" src="https://github.com/user-attachments/assets/f3aa7483-d48a-4ab7-9c9f-75d62a82d4ab" /> <br><br/>
 Setelah selesai file "angel" bisa dihapus.
