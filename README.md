@@ -236,12 +236,142 @@ Jalankan Program: <br/>
 
 Setelah selesai file "contract_daemon" bisa dihapus.
 
-
-
-
-
-
-
-
-
 ### Soal 3
+#### Struktur Repositori Soal 3 di Akhir
+<img width="248" height="167" alt="2026-04-08_23-25-37" src="https://github.com/user-attachments/assets/b808d8e4-76a0-45e6-b11e-4cdb98986edf" />
+
+<br/>Buat file "angel.c"
+<br/>Soal 3 memerintahkan
+1. Membuat file "LoveLetter.txt"
+2. Mengisi dengan kalimat random
+3. Mengubahnya ke dalam format Base64
+4. Menyimpan log di "ethereal.log"
+5. Menyediakan fitur decrypt dan kill
+<br/>
+
+#### 1
+```bash
+void write_log(char *proc, char *status){
+  FILE *log = fopen("ethereal.log", "a");
+
+  time_t t = time(NULL); // Mengambil waktu sekarang
+  struct tm tm = *localtime(&t); // Format waktu
+
+  fprintf(log, "[%02d:%02d:%04d]-[%02d:%02d:%02d]_%s_%s\n", // Format log
+          tm.tm_mday, tm.tm_mon+1, tm.tm_year+1900,
+          tm.tm_hour, tm.tm_min, tm.tm_sec,
+          proc, status);
+  fclose(log);
+}
+```
+Function diatas berfungsi untuk membuat "ethereal.log" sebagai penyimpan log. <br/>
+
+#### 2
+```bash
+void secret(){
+  write_log("secret", "RUNNING");
+
+  char *quotes[] = {
+    "aku akan fokus pada diriku sendiri",
+    "aku mencintaimu dari sekarang hingga selamanya",
+    "aku akan menjauh darimu hingga takdir mempertemukan kita",
+    "kalau aku dilahirkan kembali aku tetap akan menyayangimu"
+  };
+
+  int idx = rand() % 4; // Random 
+
+  FILE *fp = fopen("LoveLetter.txt", "w");
+  if(fp == NULL){
+    write_log("secret", "ERROR");
+    return;
+  }
+
+  fprintf(fp, "%s", quotes[idx]);
+  fclose(fp);
+
+  write_log("secret", "SUCCESS");
+}
+```
+Function ini berfungsi untuk membuat "LoveLetter.txt" serta mengisinya dengan kalimat random yang tersedia di char *quotes[]. <br/>
+
+#### 3
+```bash
+void surprise(){
+  write_log("surprise", "RUNNING");
+
+  FILE *fp = fopen("LoveLetter.txt", "r");
+  if(fp == NULL){
+    write_log("surprise", "ERROR");
+    return;
+  }
+
+  char buffer[1024];
+  fgets(buffer, sizeof(buffer), fp);
+  fclose(fp);
+
+  char *enc = base64_encode(buffer); // Encode
+
+  fp = fopen("LoveLetter.txt", "w");
+  fprintf(fp, "%s", enc);
+  fclose(fp);
+
+  free(enc);
+  write_log("surprise", "SUCCESS");
+}
+```
+Funtion diatas berfungsi untuk mengubah isi file menjadi Base64. <br/>
+
+#### 4
+```bash
+void decrypt(){
+  write_log("decrypt", "RUNNING");
+
+  FILE *fp = fopen("LoveLetter.txt", "r");
+  if(fp == NULL){
+    write_log("decrypt", "ERROR");
+    return;
+  }
+
+  char buffer[1024];
+  fgets(buffer, sizeof(buffer), fp);
+  fclose(fp);
+
+  char *dec = base64_decode(buffer); // Decode
+
+  fp = fopen("LoveLetter.txt", "w");
+  fprintf(fp, "%s", dec);
+  fclose(fp);
+
+  free(dec);
+  write_log("decrypt", "SUCCESS");
+}
+```
+Function diatas berfungsi untuk mengembalikan isi Base64 ke bentuk asli. <br/>
+
+#### 5
+```bash
+void do_kill(){
+  FILE *fp = fopen("angel.pid", "r");
+  if(fp == NULL){
+    printf("Daemon tidak ditemukan\n");
+    return;
+  }
+
+  int pid;
+  fscanf(fp, "%d", &pid);
+  fclose(fp);
+
+  kill(pid, SIGTERM);
+  remove("angel.pid");
+
+  write_log("kill", "SUCCESS");
+}
+```
+Function diatas berfungsi untuk menghentikan daemon. <br/><br/>
+
+Jalankan Program: <br/>
+<img width="608" height="197" alt="2026-04-09_00-35-47" src="https://github.com/user-attachments/assets/f7d75b2d-f89f-44a9-8ccc-11fff822820a" /> <br/>
+<img width="363" height="128" alt="2026-04-09_00-36-24" src="https://github.com/user-attachments/assets/66ec1339-8df6-478a-9d0d-a4fe52c434f9" /> <br/>
+<img width="245" height="53" alt="2026-04-09_00-38-32" src="https://github.com/user-attachments/assets/e6bbc497-55b8-4670-894d-fdb0e9d8f176" /> <br/>
+<img width="822" height="81" alt="2026-04-09_00-39-11" src="https://github.com/user-attachments/assets/f3aa7483-d48a-4ab7-9c9f-75d62a82d4ab" />
+
