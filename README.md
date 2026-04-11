@@ -383,7 +383,7 @@ Jalankan Program: <br/>
 Kondisi ketika ./angel, <br/>
 <img width="580" height="135" alt="2026-04-09_00-40-39" src="https://github.com/user-attachments/assets/19d4757d-e591-4a80-873a-984546179f78" /> <br/><br/>
 
-Kondisi ketika ./angel dihentikan, <br/>
+Kondisi ketika ./angel -kill (menghentikan daemon), <br/>
 <img width="245" height="53" alt="2026-04-09_00-38-32" src="https://github.com/user-attachments/assets/e6bbc497-55b8-4670-894d-fdb0e9d8f176" /> <br/>
 <img width="822" height="81" alt="2026-04-09_00-39-11" src="https://github.com/user-attachments/assets/f3aa7483-d48a-4ab7-9c9f-75d62a82d4ab" /> <br><br/>
 Setelah selesai file "angel" bisa dihapus agar sesuai dengan struktur di soal 3.
