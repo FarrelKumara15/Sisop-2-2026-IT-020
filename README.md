@@ -76,7 +76,7 @@ Program diatas berfungsi untuk zip folder "brankas_kedai" <br/>
 
 Jalankan Program: <br/>
 <img width="682" height="433" alt="2026-04-08_22-46-01" src="https://github.com/user-attachments/assets/7c636c35-de46-4600-9a89-4fba0bae36e7" />
-<br/>Setelah selesai, file "kasir_muthu" bisa dihapus.
+<br/>Setelah selesai, file "kasir_muthu" bisa dihapus agar sesuai dengan struktru di soal 1
 <br/><br/>
 
 ### Soal 2
@@ -240,7 +240,7 @@ Kondisi ketika isi "contract.txt" diubah,<br/>
 Kondisi ketika daemon dihentikan,<br/>
 <img width="930" height="734" alt="2026-04-08_00-11-09" src="https://github.com/user-attachments/assets/afeace70-983f-4afa-872c-d40e76ad868f" /> <br/> <br/>
 
-Setelah selesai file "contract_daemon" bisa dihapus.
+Setelah selesai file "contract_daemon" bisa dihapus agar sesuai dengan struktur di soal 2.
 
 ### Soal 3
 #### Struktur Repositori Soal 3 di Akhir
@@ -386,4 +386,4 @@ Kondisi ketika ./angel, <br/>
 Kondisi ketika ./angel dihentikan, <br/>
 <img width="245" height="53" alt="2026-04-09_00-38-32" src="https://github.com/user-attachments/assets/e6bbc497-55b8-4670-894d-fdb0e9d8f176" /> <br/>
 <img width="822" height="81" alt="2026-04-09_00-39-11" src="https://github.com/user-attachments/assets/f3aa7483-d48a-4ab7-9c9f-75d62a82d4ab" /> <br><br/>
-Setelah selesai file "angel" bisa dihapus.
+Setelah selesai file "angel" bisa dihapus agar sesuai dengan struktur di soal 3.
